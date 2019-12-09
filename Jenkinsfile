@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Prepare Environment') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'tools']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e12b4da2-d040-482c-bfeb-6d770514be03', url: 'http://gerrit.div1-vnext.systems/automation/jenkins/tools']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'tools']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '30abbd56-86e8-49f5-9b89-9bebaf4102f4', url: 'https://github.com/tunglouis/automation-jenkins-tools.git']]])
                 sh label: 'Prepare Environment Variables', script: '''#!/bin/bash
                     case $AwsCredentialId in
                         AWS-DEV-*)
