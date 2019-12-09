@@ -1,0 +1,9 @@
+#cloud-config
+merge_how:
+ - name: list
+   settings: [append]
+ - name: dict
+   settings: [no_replace, recurse_list]
+
+runcmd:
+  - sudo curl -sL https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm -o /var/run/amazon-cloudwatch-agent.rpm && sudo rpm -U /var/run/amazon-cloudwatch-agent.rpm; sudo rm /var/run/amazon-cloudwatch-agent.rpm

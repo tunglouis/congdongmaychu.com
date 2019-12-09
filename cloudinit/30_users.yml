@@ -1,0 +1,44 @@
+#cloud-config
+merge_how:
+ - name: list
+   settings: [append]
+ - name: dict
+   settings: [no_replace, recurse_list]
+
+users:
+  - default
+  - name: index_worker_dev
+    gecos: index_worker_dev script
+    system: true
+  - name: mitsuhiro.ohishi
+    ssh_authorized_keys: 
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHqw9/hzO7HrPpRF/zBQ2LC4Ug4TIPZS1RjnXF7IcE0oSz+1db+uXkuCh8AlvtS5DNRW2CwIJsvTH64HlI1RLwqOcjkIoYTN+wR8v//X/hQRB6NL2LGlJep1b3Efsdz9BzhXhKNRvW46dQ1UOXkJaiijCfNBOj23tjfeJVkO4bH31cD6zwGb+qcaqzn9w6weScrptQG2T0Fp/mf7xgkcFenrEMk0ojcs6x7wiH/PrRQhxHFmsinPzfs+oq250o1bJUNS0InSQGoeb7qESend2Xu8OZayw83QHoWDYeDmmkgKB149DdARXsbw/ZBkvZ+/m1Yca4Jx491VW1pTznobfD perry@localhost.localdomain
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: noboru.kawaguchi
+    ssh_authorized_keys: 
+    - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAzn99VFkqDfyZbZsbm7hcSijAiV8dGKPxKCTz4TWtmCAHXLYesrfTfvdBEF64nwRKI4QGhf9Tsl5ACyt5Ruvo3n4/6GqZvCTdUfc9kVQDAOwLoztMeVaj7rPN3bj/KJAeCmBPDrKGMoUfjStQ7ZQqeSRDqWlyj+wCA1CRifdCgKjPDYyJ9TFf//j0sBVS8Bedpfl5hq8ftA1jSKUx73Du1O9cQcRRMhTq9m4c3VYO2CJFYqQAwy/PJV0QJ3BFnkyz92PtXk6rOrOH/RnVyv+5MajCmH5isZskBCkxsJGWt5J+7f9HAeei1kPhEUJNjQ5+GfxRhhTC22A1l+mZXJFgMQ==
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: kwanhun.seo
+    ssh_authorized_keys: 
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCj/tAms4kNlWHM3w+rYabJx1eD4ec5pfJtCYnp0s6HnfQsuGaoKIKBlFwUE3C+2E6iP/wLc1CUE/KsKBb+60pdN9FNC6ILFL35R4w7+5r7SbHf8f9q/1bxqmKp5s26HD3VAgixw8rSfnc+nb8tsAEZ3Of0jcnURErgb0/ayVaFSiN0mDXdBd985Lb9msAoVg6Mt9u/7bep8m17HbDskJIiG0yqEBcazuNJCyMO6Oam6zGRgHDupfCEloiOKwsKq3k8QfhqNAGxM1FNDG/6wqLVB5CGVvT3kOREV/WEDNKrkwJQAEwJyCrm0FTuXSbeqzK6+O3aQv1/R5X98YS61lmv kwanhun.seo@porters@PC172
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: arwyn.hainsworth
+    ssh_authorized_keys: 
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2ixmZN8zUqETwSfeZ4xuvX0Oe0/RIYvWeKB9HW4t/7bTyvkCGbEiK0VWwH1Hk2IAZthN2oBgDq1bMUE1Ec0iehiaGWouiuZtjkUIjoaL7ujw1NufcSqQW3FJaQuw9pyoWooaH5Z3BpuKhS6ptrf4N6ByrtAdosseEOY4N4JBiEe2o6nc8PW2cDLu3Tg55sjxmdsAuqC3P3IdVHZYukUhyuf4uy4fjAlyDBycBtfWYBSW1bfcqjbpsy+GB6UXwTx+Nczp9wwk+PALDQLQUPPm5FMP9qw4VvHfrStJl3UCpMAuHA3NwNem64ovv+vLbOlrLyJrstqX9b53Z0V0AuZ3x arwyn@ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: jongchan.lee
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8Uf6fR/6xVK7Y9ODfkJBbNn9a6c2x6NXVkFvXuOVo5jSUjU8SWOJKipetpQzvXJ7MJ1S+EbnH3ZDaltdfOIDAF3H6JQglQqtpVXjuO4X4uPpxT27TewOWujSZeAsfGx4QprPfN0gm1iXfbJks0JhrgdOwhDdtDFE05CFu9g9RRJKtIQ3ecXYzqUz1CmXaaQiSSxCTn0rHUst30JWPO8EG4Rf/ZRQhZ3EEtNgmcZt0qNf31qo1kxHEY3Gsf3B4HWyxSZ/xxBSMmH4rsaVkEIb88eo3iGPViMpK+LyuOkNue/GGm8CC1i86bELNbTyH6bcGzKDRY+pMbWE/U/IxB2MZ jongchan.lee@PC172
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: daehyeop.ko
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDC1i0Qk8prz7haNzKMtuhodJN26nHvDJ7DhkOWT9GvxeulAgxPh5jkg8n4DGIF/Jllb41SfVFhDwdzylWSbsvowFRN2k51+nNKq3jmGOMblU9tgbRKK/KfUu5iNU3hycy5qSWtNBHs+XWrN4aDvM+TJ3HlE7noI15GLmdYFNz1gxc6qiOwDROoCkcLNgKvUuAv8T+aaCMs+CbO8srBHkAsVe++pQx8H+KF64oEYjVjK2AnoMmXQKV5UDcs67oBk/kTMCs1vG77IjKbDNbjq9PIRx1v+UfHaO+tVklsgWD8vyVaa6Jz/L4pS2CFoEdWqEEHghoyCjQz0Nu9GDiVhyZN daehyeop.ko@porters@PC227
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: yongha.shin
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWZvQgmdKhIbX/2RSZD9cERmVpWo3JG/aYEswPM4XiYhGJxwN6w1veDz1I2ObqJQSK+/POV/XJ50HNSg0ISEhTF3f31Sv2FaEgDCkGJksEMZRDz7B2LDTMCuC8OBO4NQ/H+kDP+z4PWnxU9FxMCA1U2gF4VKg2DDDO/IN322pzc2V3Dh6SUEvl81KRM6kDmO8Pgt6xQLYAAnC4pSqKvWpXrxDvQ4Jnf/wbcj+3HY3f8s3FKWsHAtzXxCatVwiFrZxJkQma2QIg7L8lxRbAuDfYCfihqNt2RYV9Iw7xpPoDopFE6mwVWZ8AmbIMutWqLOj0oIL68uMiFGB2vBgGpGaV porters\yongha.shin@PC157
+    sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: heedoo.kwon
+    ssh_authorized_keys: 
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDM+6TTYA2opWWCFcLhd9EPceRLr2p+TkOGIYu4cpd+8obnk7W72w9TOkLS+I9BZMO0+nRYhY9PzVfJYIVs4h7Ki5XY2bWyb1q/hHFVTNsttK8jNBHEx/L2tPtg7wkrHo60hiH5o7qO5XqIYJ3hj2SSrF4MeMYMQRI8VMPJT8YdH2lp1SMTD0tuGNDhu9AqIWUh5xXss5X3S3CjdRdHNchQEXLsbBQYf2TVB7GqZ+xMSfnBXVIHDXwgYRJJ8PuGe7mKfJdw0x+KvzUaxMYcOzT6KACCwrpTU07DaVcfyGJZJ9ehr0WH/dVDuwdhEGzjxa3UNgjaX0IvBpAoLTgFZ/47 porters\heedoo.kwon@PC142"
+    sudo: ALL=(ALL) NOPASSWD:ALL

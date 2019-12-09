@@ -1,0 +1,14 @@
+[Unit]
+Description=Set Hostname to include EC2 Metadata and Tags
+After=aws-env.service
+Requires=aws-env.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/porters/hostname-start.sh
+ExecStop=/usr/libexec/porters/hostname-stop.sh
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

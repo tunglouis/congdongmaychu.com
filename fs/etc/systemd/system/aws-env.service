@@ -1,0 +1,16 @@
+[Unit]
+Description=Export EC2 Metadata and Tags to Environment Files
+After=network.target
+Requires=network.target
+OnFailure=fail-notify@%n
+#RestartSec=3
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/porters/aws-env-start.sh
+ExecStop=/usr/libexec/porters/aws-env-stop.sh
+StandardOutput=journal
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

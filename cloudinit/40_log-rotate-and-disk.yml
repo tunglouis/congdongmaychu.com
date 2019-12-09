@@ -1,0 +1,66 @@
+#cloud-config
+merge_how:
+ - name: list
+   settings: [append]
+ - name: dict
+   settings: [no_replace, recurse_list]
+
+write_files:
+  - path: /etc/logrotate.d/secure
+    permissions: "0600"
+    content: |
+      /var/log/system/secure
+      {
+        daily
+        maxsize 1024k
+        missingok
+        notifempty
+        nocompress
+        dateext
+        dateformat -%Y%m%d-%H%M%S
+        sharedscripts
+        postrotate
+          reload rsyslog >/dev/null 2>&1 || true
+          /bin/bash /usr/libexec/porters/log-file-remove.sh system/secure
+        endscript
+      }
+  - path: /etc/logrotate.d/system
+    permissions: "0644"
+    content: |
+      /var/log/system/messages
+      /var/log/system/maillog
+      /var/log/system/cron
+      /var/log/system/spooler
+      /var/log/system/boot.log
+      {
+        daily
+        maxsize 1024k
+        missingok
+        notifempty
+        nocompress
+        dateext
+        dateformat -%Y%m%d-%H%M%S
+        sharedscripts
+        postrotate
+          reload rsyslog >/dev/null 2>&1 || true
+          /bin/bash /usr/libexec/porters/log-file-remove.sh system/messages system/maillog system/cron system/spooler system/boot.log
+        endscript
+      }
+  - path: /etc/cron.d/minutesLogSizeRotate
+    owner: root:root
+    permissions: "0644"
+    content: |
+      */5 * * * * root /usr/sbin/logrotate -f /etc/logrorate.conf
+bootcmd:
+    - mkdir -p /var/log/system
+    - mkdir -p /var/log/application
+    - mkdir -p /var/log/journal
+    - echo "tmpfs /var/log/system tmpfs auto,exec,rw,nouser,suid,uid=0,gid=0,size=32M 0 0" >> /etc/fstab
+    - echo "tmpfs /var/log/journal tmpfs auto,exec,rw,nouser,suid,uid=0,gid=0,size=16M 0 0" >> /etc/fstab
+    - echo "tmpfs /var/log/application tmpfs auto,exec,rw,nouser,suid,uid=0,gid=0,size=16M 0 0" >> /etc/fstab
+    - mount /var/log/system
+    - mount /var/log/application
+    - mount /var/log/journal
+runcmd:
+    - sed -i 's/var\/log/var\/log\/system/g' /etc/rsyslog.conf
+    - sed -i '/#\(System\|Runtime\)MaxUse=/ s/#\(.*\)=/\1=8M/' /etc/systemd/journald.conf
